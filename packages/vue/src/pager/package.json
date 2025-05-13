@@ -15,6 +15,7 @@
     "@opentiny/vue-base-select": "workspace:~",
     "@opentiny/vue-common": "workspace:~",
     "@opentiny/vue-icon": "workspace:~",
+    "@opentiny/utils": "workspace:~",
     "@opentiny/vue-loading": "workspace:~",
     "@opentiny/vue-pager-item": "workspace:~",
     "@opentiny/vue-popover": "workspace:~",

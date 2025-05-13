@@ -270,6 +270,7 @@ import IconPopup from './src/popup'
 import IconPreChecked from './src/pre-checked'
 import IconPrintPreview from './src/print-preview'
 import IconPushpin from './src/pushpin'
+import IconPushpinSolid from './src/pushpin-solid'
 import IconRadio from './src/radio'
 import IconRadioselected from './src/radioselected'
 import IconReactjs from './src/reactjs'
@@ -1220,6 +1221,8 @@ export {
   IconPrintPreview as iconPrintPreview,
   IconPushpin,
   IconPushpin as iconPushpin,
+  IconPushpinSolid,
+  IconPushpinSolid as iconPushpinSolid,
   IconRadio,
   IconRadio as iconRadio,
   IconRadioselected,
@@ -1918,6 +1921,7 @@ export default {
   IconPreChecked,
   IconPrintPreview,
   IconPushpin,
+  IconPushpinSolid,
   IconRadio,
   IconRadioselected,
   IconReactjs,
