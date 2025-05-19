@@ -45,6 +45,7 @@
     <div
       data-tag="tiny-steps-block"
       v-for="(node, index) in data"
+      :style="itemStyle[node.status || 'none']"
       v-show="isVisibleHandler(index) === 'visible'"
       :key="index"
       :class="
@@ -78,7 +79,7 @@
                 'border-color-brand':
                   data[index - 1] &&
                   data[index - 1][statusField] === 'done' &&
-                  ['done', 'disabled'].includes(node[statusField])
+                  ['done', 'disabled', 'error', ''].includes(node[statusField])
               }
             )
           "
@@ -237,7 +238,18 @@ export default defineComponent({
     IconFinish: IconFinish(),
     IconWarn: IconWarn()
   },
-  props: [...props, 'vertical', 'nameField', 'statusField', 'data', 'active', 'visibleNum', 'descriptionField', 'size'],
+  props: [
+    ...props,
+    'vertical',
+    'nameField',
+    'statusField',
+    'data',
+    'active',
+    'visibleNum',
+    'descriptionField',
+    'size',
+    'itemStyle'
+  ],
   setup(props: any, context: any) {
     return setup({ props, context, renderless, api, classes })
   }
