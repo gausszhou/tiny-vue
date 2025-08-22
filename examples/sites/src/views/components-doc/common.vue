@@ -66,8 +66,8 @@
               <!-- 主题变量 -->
               <design-token :name="state.cmpId" :tokenList="state.tokenList" />
             </tiny-tab-item>
-            <tiny-tab-item v-if="appData.hasFloatRobot" title="MCP" name="MCP">
-              <McpDocs :name="state.cmpId" />
+            <tiny-tab-item v-if="mcpInfo.length > 0" title="MCP" name="MCP">
+              <McpDocs :data="mcpInfo" :name="capName" />
             </tiny-tab-item>
           </tiny-tabs>
 
@@ -111,9 +111,10 @@ import ApiDocs from '../../components/api-docs.vue'
 import DesignToken from '../../components/design-token.vue'
 import McpDocs from '../../components/mcp-docs.vue'
 import useTasksFinish from '../../composable/useTasksFinish'
-import { appData } from '../../tools/appData'
 import list from '@opentiny/vue-theme/token'
-import { cmpAnchorDataCallback } from '../../tools/globalMcpTool'
+import { cmpAnchorDataCallback } from '../../composable/useTinyRemoter'
+import { getTinyVueMcpConfig } from '@opentiny/tiny-vue-mcp'
+import { camelize, capitalize } from '@vue/shared'
 
 const props = defineProps({ loadData: {}, appMode: {}, demoKey: {} })
 
@@ -450,9 +451,29 @@ const handleAnchorClick = (e, data) => {
   }
 }
 
+// 页面加载时，创建一个返回 anchor data的函数。 这样工具调用时，可以拿到最新 anchor 信息
 cmpAnchorDataCallback.value = () => state.currJson.demos
 onUnmounted(() => {
   cmpAnchorDataCallback.value = null
+})
+
+// MCP tab页签的数据
+const mcpTools = getTinyVueMcpConfig({ t: null })
+const capName = computed(() => capitalize(camelize(state.cmpId || '')))
+
+const mcpInfo = computed(() => {
+  const schema = mcpTools.components[capName.value]?.paramsSchema
+  if (schema) {
+    return Object.keys(schema).map((name) => {
+      const item = schema[name]
+      return {
+        name,
+        param: item._def?.innerType?._def?.typeName || '',
+        desc: item._def?.description || ''
+      }
+    })
+  }
+  return []
 })
 
 defineExpose({ loadPage })
