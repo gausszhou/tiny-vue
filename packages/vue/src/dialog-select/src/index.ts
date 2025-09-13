@@ -26,7 +26,7 @@ export default defineComponent({
     popseletor: {
       type: String,
       default: 'grid',
-      validator: (value) => ~['grid', 'tree'].indexOf(value)
+      validator: (value: string) => ['grid', 'tree'].includes(value)
     },
     multi: {
       type: Boolean,
