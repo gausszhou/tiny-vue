@@ -16,7 +16,6 @@ import { onMounted, provide, ref } from 'vue'
 import { TinyConfigProvider, TinyModal } from '@opentiny/vue'
 import { iconClose } from '@opentiny/vue-icon'
 import { TinyRemoter } from '@opentiny/next-remoter'
-import '@opentiny/next-remoter/dist/style.css'
 import { useTinyRemoter, webMcpSessionId } from './composable/useTinyRemoter'
 
 import useTheme from './tools/useTheme'

@@ -18,7 +18,7 @@
   >
     <div
       v-show="visible"
-      :class="['tiny-dialog-box__wrapper', dialogClass]"
+      :class="['tiny-dialog-box__wrapper', dialogClass, { 'is-modal': modal }]"
       @click.self="handleWrapperClick"
       @mouseup="useMouseEventUp"
       @mousedown="useMouseEventDown"

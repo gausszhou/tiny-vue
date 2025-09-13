@@ -1,5 +1,8 @@
 import { createHead } from '@vueuse/head'
 import { createApp } from 'vue'
+
+// 由于 @opentiny/next-remoter/dist/style.css 中包含了旧版的弹窗和动画样式，这里调整到最前，不确定是否会有其他影响，请评估
+import '@opentiny/next-remoter/dist/style.css'
 import '@unocss/reset/eric-meyer.css'
 
 // markdown文件内代码高亮

@@ -155,8 +155,6 @@
   @apply top-0;
   @apply w-full;
   @apply h-full;
-  @apply opacity-30;
-  @apply bg-black;
 }
 
 .v-modal-enter {
@@ -231,24 +229,20 @@
 
 @keyframes dialog-fade-in {
   0% {
-    transform: translate3d(0, -20px, 0);
     @apply opacity-0;
   }
 
   100% {
-    transform: translate3d(0, 0, 0);
     @apply opacity-100;
   }
 }
 
 @keyframes dialog-fade-out {
   0% {
-    transform: translate3d(0, 0, 0);
     @apply opacity-100;
   }
 
   100% {
-    transform: translate3d(0, -20px, 0);
     @apply opacity-0;
   }
 }
