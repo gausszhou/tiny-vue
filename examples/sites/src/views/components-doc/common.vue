@@ -96,7 +96,7 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, computed, watch, onMounted, nextTick, ref, onUnmounted } from 'vue'
+import { reactive, computed, watch, onMounted, nextTick, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { TinyTabs, TinyTabItem } from '@opentiny/vue'
 import { debounce } from '@opentiny/utils'
@@ -112,7 +112,6 @@ import DesignToken from '../../components/design-token.vue'
 import McpDocs from '../../components/mcp-docs.vue'
 import useTasksFinish from '../../composable/useTasksFinish'
 import list from '@opentiny/vue-theme/token'
-import { cmpAnchorDataCallback } from '../../composable/useTinyRemoter'
 import { getTinyVueMcpConfig } from '@opentiny/tiny-vue-mcp'
 import { camelize, capitalize } from '@vue/shared'
 
@@ -302,7 +301,6 @@ const loadPage = () => {
     state.mdString = mdString
     // plus隐藏头部集合
     const hideTabHeader = ['interfaces', 'types', 'classes'].includes(state.cmpId)
-
     if (demosJson && !hideTabHeader) {
       // 默认设置每个实例demo都不和视图相交
       demosJson.demos?.forEach((item) => {
@@ -451,12 +449,6 @@ const handleAnchorClick = (e, data) => {
   }
 }
 
-// 页面加载时，创建一个返回 anchor data的函数。 这样工具调用时，可以拿到最新 anchor 信息
-cmpAnchorDataCallback.value = () => state.currJson.demos
-onUnmounted(() => {
-  cmpAnchorDataCallback.value = null
-})
-
 // MCP tab页签的数据
 const mcpTools = getTinyVueMcpConfig({ t: null })
 const capName = computed(() => capitalize(camelize(state.cmpId || '')))
@@ -511,7 +503,7 @@ defineExpose({ loadPage })
       z-index: var(--docs-tabs-header-zindex);
       background-color: var(--docs-color-bg);
 
-      &::after {
+      &::before {
         content: '';
         position: absolute;
         bottom: 0;
