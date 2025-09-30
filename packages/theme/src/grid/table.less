@@ -903,6 +903,26 @@
     }
 
     .@{grid-prefix-cls}-body__column {
+      position: relative;
+
+      &.col__highlight-error {
+        .@{grid-cell-prefix-cls}::after {
+          content: '';
+          position: absolute;
+          border: 1px solid var(--tv-Grid-error-border-color);
+          top: 4px;
+          bottom: 4px;
+          left: 8px;
+          right: 8px;
+        }
+
+        &.col__actived {
+          .@{grid-cell-prefix-cls}::after {
+            display: none;
+          }
+        }
+      }
+
       &.col__actived,
       &.edit__visible {
         padding: 0 var(--tv-Grid-cell-padding-x);
