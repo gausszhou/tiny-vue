@@ -54,6 +54,14 @@ const docMenusChildren = [
     }
   },
   {
+    'title': '全局动效配置',
+    'titleEn': 'motion-configuration',
+    'key': 'motion-configuration',
+    showScene: {
+      theme: ['default']
+    }
+  },
+  {
     'title': '智能化',
     'titleEn': 'mcp',
     'key': 'mcp'
