@@ -579,7 +579,7 @@ const Methods = {
   getColumnIndex(column) {
     const { fullColumnMap } = this
 
-    return fullColumnMap.has(column) ? fullColumnMap.get(column).index : -1
+    return fullColumnMap.has(column) ? fullColumnMap.get(column).columnIndex : -1
   },
   hasIndexColumn(column) {
     return column?.type === 'index'
@@ -1001,7 +1001,8 @@ const Methods = {
 
     // 获取叶子列数组
     const options = { columnCaches: [] }
-    const fullColumn = getColumnList(value, options)
+    this.markColumnIndex = 0
+    const fullColumn = getColumnList(this, value, options)
 
     if (options.isGroup && options.hasFixed) {
       value.forEach((root) => repairFixed(root))
