@@ -71,6 +71,7 @@ export const getColumnList = ($table, columns, options = {}, level = 0) => {
       columnIndex: isLeaf ? $table.markColumnIndex++ : null
     })
 
+    // eslint-disable-next-line prefer-spread
     result.push.apply(result, hasChildren ? getColumnList($table, column.children, options, level + 1) : [column])
   })
 

@@ -50,6 +50,28 @@
         <span class="svgs-text" :title="name">{{ name }}</span>
       </div>
     </div>
+    <hr />
+    <div class="svgs-wrapper">
+      <div
+        v-for="name in batch3Icons"
+        :key="name"
+        :class="{
+          'svg-visible': searchName === '' || name.toLowerCase().includes(searchName.toLowerCase()),
+          'svgs-item': true
+        }"
+        @click="click(name)"
+      >
+        <component
+          :is="Svgs[name] && Svgs[name]()"
+          class="svgs-icon"
+          :first-color="firstColor"
+          :second-color="secondColor"
+          :shape="shape"
+          :underlay="isUnderlay ? underlay : null"
+        ></component>
+        <span class="svgs-text" :title="name">{{ name }}</span>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -65,7 +87,7 @@ import {
   TinyColorPicker,
   TinySwitch
 } from '@opentiny/vue'
-import { advanceIcons } from './advance-icons.js'
+import { advanceIcons, batch3Icons } from './advance-icons.js'
 
 export default {
   components: {
@@ -81,6 +103,7 @@ export default {
     return {
       Svgs,
       advanceIcons,
+      batch3Icons,
       searchName: '',
       shape: 'line',
       firstColor: '#0067D1',
