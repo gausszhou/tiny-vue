@@ -379,10 +379,10 @@ export default {
         {
           name: 'top',
           type: 'number | string',
-          defaultValue: '80',
+          defaultValue: '80px',
           desc: {
-            'zh-CN': "消息距离顶部的位置，仅当 type 为 'message' 时有效",
-            'en-US': "The position of the message from the top, only valid when type is 'message'"
+            'zh-CN': '模态框距离顶部的位置',
+            'en-US': 'The position of the modal from the top'
           },
           mode: ['pc', 'mobile-first'],
           pcDemo: 'message-top',

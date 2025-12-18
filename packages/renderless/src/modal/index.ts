@@ -61,8 +61,13 @@ export const computedBoxStyle =
       return {}
     }
 
+    let top = ''
     let width: string | number = ''
     let height: string | number = ''
+
+    if (props.type === 'alert' || props.type === 'confirm') {
+      top = typeof props.top === 'number' ? `${props.top}px` : props.top
+    }
 
     if (props.width) {
       width = isNaN(props.width as number) ? props.width : `${props.width}px`
@@ -72,7 +77,7 @@ export const computedBoxStyle =
       height = isNaN(props.height as number) ? props.height : `${props.height}px`
     }
 
-    return { width, height }
+    return { top, width, height }
   }
 
 export const watchValue =

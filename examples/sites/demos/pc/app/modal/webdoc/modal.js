@@ -301,12 +301,12 @@ export default {
     {
       demoId: 'message-top',
       name: {
-        'zh-CN': '消息距离顶部位置',
+        'zh-CN': '模态框距离顶部位置',
         'en-US': 'Position from top'
       },
       desc: {
-        'zh-CN': '通过<code>top</code>属性设置消息距离顶部的位置，单位为 px',
-        'en-US': `Use the <code>top</code> property to set the distance from the top of the message in units of px. `
+        'zh-CN': '通过<code>top</code>属性设置模态框距离顶部的位置',
+        'en-US': 'Use the <code>top</code> property to set the distance from the top of the modal.'
       },
       codeFiles: ['message-top.vue']
     },
